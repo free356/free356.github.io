@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/free356.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/free356.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/free356.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/free356.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/free356.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/free356.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/free356.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C++,programming,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本博客为系列博客，主要用来记录《C++primer plus》学习笔记。 1，认识C++先看第一个C++程序： 12345678910#include &amp;lt;iostream&amp;gt;int main()&amp;#123;    using namespace std;    cout &amp;lt;&amp;lt;&amp;apos;come up and C++ me some time&amp;apos;;    cout &amp;">
+<meta name="keywords" content="C++,programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《C++ Primer Plus》学习笔记一：C++基础数据和运算">
+<meta property="og:url" content="https://free356.github.io/2020/04/28/《C-Primer-Plus》学习笔记一：C-基础数据和运算/index.html">
+<meta property="og:site_name" content="free356">
+<meta property="og:description" content="本博客为系列博客，主要用来记录《C++primer plus》学习笔记。 1，认识C++先看第一个C++程序： 12345678910#include &amp;lt;iostream&amp;gt;int main()&amp;#123;    using namespace std;    cout &amp;lt;&amp;lt;&amp;apos;come up and C++ me some time&amp;apos;;    cout &amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-28T10:45:02.269Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《C++ Primer Plus》学习笔记一：C++基础数据和运算">
+<meta name="twitter:description" content="本博客为系列博客，主要用来记录《C++primer plus》学习笔记。 1，认识C++先看第一个C++程序： 12345678910#include &amp;lt;iostream&amp;gt;int main()&amp;#123;    using namespace std;    cout &amp;lt;&amp;lt;&amp;apos;come up and C++ me some time&amp;apos;;    cout &amp;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/free356.github.io/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://free356.github.io/2020/04/28/《C-Primer-Plus》学习笔记一：C-基础数据和运算/">
+
+
+
+
+
+  <title>《C++ Primer Plus》学习笔记一：C++基础数据和运算 | free356</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/free356.github.io/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">free356</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/free356.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/free356.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/free356.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/free356.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://free356.github.io/free356.github.io/2020/04/28/《C-Primer-Plus》学习笔记一：C-基础数据和运算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LH">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/free356.github.io/images/head_icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="free356">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《C++ Primer Plus》学习笔记一：C++基础数据和运算</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-28T18:41:45+08:00">
+                2020-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/free356.github.io/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/free356.github.io/2020/04/28/《C-Primer-Plus》学习笔记一：C-基础数据和运算/" class="leancloud_visitors" data-flag-title="《C++ Primer Plus》学习笔记一：C++基础数据和运算">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本博客为系列博客，主要用来记录《C++primer plus》学习笔记。</p>
+<h2 id="1，认识C"><a href="#1，认识C" class="headerlink" title="1，认识C++"></a>1，认识C++</h2><p>先看第一个C++程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    using namespace std;</span><br><span class="line">    cout &lt;&lt;&apos;come up and C++ me some time&apos;;</span><br><span class="line">    cout &lt;&lt; endl; </span><br><span class="line">    cout &lt;&lt; &quot;you won&apos;t regret it!&quot; &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码表面了一个名为main()的函数，构成了函数定义。该定义有两部分：int mian()叫函数头，花括号及其他叫函数体。</p>
+<p>Int mian()表明其可以给调用它的函数返回一个整数值，且不从调用它的函数那里获取任何信息。通常，mian()函数被启动代码调用，启动代码由编译器添加到程序中，是程序和操作系统之间的桥梁。在C++中，它和int main(void)等效。</p>
+<p>另外，输出有cout而不是C语言的printf。其实，C++可以用printf()，scanf()和其他所有标准的C输入和输出函数，只需包含C语言的stdio.h文件。</p>
+<p>使用cin，cout进行输入输出的程序都必须包括<code>#include &lt;iostream</code>。该编译指令会使得预处理程序将iostream文件的内容添加到程序中。实际上，iostream文件的内容将会取代程序中的代码行<code>#include &lt;iostream</code>，原始文件没有被修改，而是将源代码文件和iostream组合成一个复合文件，供编译的下一阶段使用。</p>
+<h2 id="2，C-基本数据类型"><a href="#2，C-基本数据类型" class="headerlink" title="2，C++基本数据类型"></a>2，C++基本数据类型</h2><h3 id="2-1-C-变量："><a href="#2-1-C-变量：" class="headerlink" title="2.1 C++变量："></a>2.1 C++变量：</h3><p>变量名具有命名规则，其中一条：以两个下划线或下划线和大写字母打头的名称被保留给实现（编译器及其使用的资源），以一个下划线开头的名称被保留给实现，用作全局标识符。如像_time_stop或_Dount这样的名称不会导致编译器错误，但会导致行为的不确定性。</p>
+<p>变量创建之后需要被初始化，如果不对函数内部定义的变量初始化，该变量的值将是不确定的，这意味着该变量的值将是它被创建之前相应内存单元保存的值。</p>
+<p>另外，C++提供了多种变量初始化方式，下面语句等价。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int ham=24;</span><br><span class="line">int ham(24);</span><br><span class="line">int ham=&#123;24&#125;;//这种方式用于数组，但也可用于单值变量</span><br><span class="line">int ham&#123;24&#125;;//采用这种方式时，等号可以省略</span><br><span class="line">int ham=&#123;&#125;;//大括号不包含任何东西时，值默认为0</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-基本类型"><a href="#2-2-基本类型" class="headerlink" title="2.2 基本类型"></a>2.2 基本类型</h3><p>基本类型包含整型和浮点型。</p>
+<p>C++的基本整型包括char，short，int，long，long long，其中每种类型都有有符号版本和无符合版本，因此总共有10种选择。</p>
+<p><strong>char:</strong>char类型专为存储字符（如字母和数字）而设计，能够表示目标计算机系统中的所有基本符号（所有字母、数字、标点符号等）。</p>
+<p><strong>sizeof运算符：</strong>对类型名使用sizeof时，应将类型名放在括号里，而对变量名使用sizeof时，括号是可选的。如夏下面三个语句等效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sizeof(int);</span><br><span class="line">sizeof(n_int);</span><br><span class="line">sizeof n_int;</span><br></pre></td></tr></table></figure>
+<h2 id="3，复合类型"><a href="#3，复合类型" class="headerlink" title="3，复合类型"></a>3，复合类型</h2><h3 id="3-1-数组"><a href="#3-1-数组" class="headerlink" title="3.1 数组"></a>3.1 数组</h3><p>声明数组的通用格式：typeName arrayName[arraySize]</p>
+<p>C++数组的初始化规则：只有在定义数组的时候才能使用初始化，之后就不能使用了（但是可以使用下标分别给数组中的元素赋值），也不能将一个数组赋给另一个数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int cards[4]=&#123;3,6,8,9&#125;</span><br><span class="line">int hands[4];</span><br><span class="line">hands[4]=&#123;5,6,7,9&#125;//not allowed</span><br><span class="line">hands=cards;  //not allowed</span><br><span class="line">hands[0]=3;</span><br></pre></td></tr></table></figure>
+<p>初始化数组时，提供的值可以少于数组的元素数目，编译器会对其他元素使用默认值。如果初始化数组时方括号为空，编译器将计算元素个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">float hotelTips[5]=&#123;5.0,2.5&#125;;</span><br><span class="line">short thing[]=&#123;1,5,3,8&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-字符串"><a href="#3-2-字符串" class="headerlink" title="3.2 字符串"></a>3.2 字符串</h3><p><strong>1，C风格字符串</strong></p>
+<p>C风格字符串以空字符结尾。，空字符被写作\0，ASCII为0，用来标记字符串的结尾。下面两个字符串等价。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char bird[]=&#123;&apos;M&apos;,&apos;r&apos;,&apos;.&apos;,&apos;C&apos;,&apos;h&apos;,&apos;e&apos;,&apos;e&apos;,&apos;p&apos;,&apos;s&apos;,&apos;\0&apos;&#125;</span><br><span class="line">char bird[]=&quot;Mr.Cheeps&quot;//用引号括起的字符串隐式地包含结尾的空字符。</span><br></pre></td></tr></table></figure>
+<p>拼接字符串常量：将两个由双引号括起的字符串合并为一个时，任何两个由空白（空格、制表符和换行符）分隔的字符串常量都将自动拼接成一个。拼接时不会在被连接的字符串之间添加空格，第二个字符串的第一个字符紧跟在第一个字符串的最后一个字符（不考虑\0）后面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">“I&apos;d give my right arm to be&quot; &quot; a great violinist\n&quot;;</span><br><span class="line">&quot;I&apos;d give my right arm to be a great violinist\n&quot;;</span><br></pre></td></tr></table></figure>
+<p>cin读取字符串输入的陷阱：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const int Size=15;</span><br><span class="line">char name[Size];</span><br><span class="line">cin&gt;&gt;name;//读取输入</span><br><span class="line">//如果输入为Alistari则name存下Alistari；</span><br><span class="line">//如果输入为Alistari Dreeb则name只能存下Alistari，这是错误的；</span><br></pre></td></tr></table></figure>
+<p>由于不能通过键盘输入空字符，因此cin需要用别的方法来确定字符串的结尾位置。cin使用空白（空格、制表符或者换行符）来确定字符串的结束位置，这意味着cin在读取字符串的时候只读取一个单词，将该单词放进数组中，并自动在结尾添加空字符。</p>
+<p><strong>cin读取输入单词</strong></p>
+<ul>
+<li><p>cin&gt;&gt;ch；忽略空格和换行和制表符。发送给cin的输入被缓冲，当按完回车后，输入中的内容才会被发送给程序。</p>
+</li>
+<li><p>cin.get(name,Arsize)：第一个参数是地址，第二个参数是长度，读取单词，空格结束。</p>
+</li>
+<li>cin.get()：返回输入中的下一个字符，包括空格、换行和制表符。到达文件尾时返回EOF。</li>
+<li>cin.get(ch)：返回值为cin对象，到达文件尾时返回istream对象，执行boolean后转换为false。</li>
+</ul>
+<p><strong>读取行：getline()和get()</strong></p>
+<p>上面每次读取一个单词是无法处理行的，因此istream中的类（如cin）提供了一些面向行的类成员函数：getline()和get()，这两个函数都读取一行输入，直到到达换行符。区别在于，getline()将丢弃换行符，而get()将换行符保存在输入序列中。</p>
+<p>getline()函数每次读取一行，通过换行符来确定行尾，但不保存换行符，并且利用空字符\0来替换换行符保存在字符串的末尾。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cin.getline(name,20)//把输入读入到name数组中-如果这行包含的字符数字不超过19个。</span><br></pre></td></tr></table></figure>
+<p>get()的陷阱：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cin.get(name,Arsize);</span><br><span class="line">cin.get(dessert,Arsize);</span><br></pre></td></tr></table></figure>
+<p>第一次调用后，换行符将保留到输入队列中，因此第二次调用时看到的第一个字符便是换行符，因此get()以为到达行尾，将不会发现任何可读取的内容，因此修改如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cin.get(name,Arsize);</span><br><span class="line">cin.get();\\吃掉换行</span><br><span class="line">cin.get(dessert,Arsize);</span><br></pre></td></tr></table></figure>
+<p>注意，当get()（不是getline()）读取空行后将设置失效位，这意味着接下来的输入将会被阻断，但可以使用<code>cin.clear()</code>恢复输入。</p>
+<p><strong>赋值和附加</strong></p>
+<p>头文件scstring提供了这些函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">strcpy(charr1,charr2);//cpoy charr2 to charr1</span><br><span class="line">strcat(charr1,charr2);//append contents of charr2 to charr1</span><br></pre></td></tr></table></figure>
+<p><strong>2，string类</strong></p>
+<p>要使用string类，必须包含头文件string，另外，string位于名称空间std中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str1;</span><br><span class="line">string str2=&quot;pather&quot;;</span><br><span class="line">cin&gt;&gt;str1;//程序自动处理string的大小，string类自动调整大小。</span><br></pre></td></tr></table></figure>
+<p>支持赋值，拼接和附加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string str1;</span><br><span class="line">string str2=&quot;pather&quot;;</span><br><span class="line">str1=str2;</span><br><span class="line">string str3;</span><br><span class="line">str3=str1+str2;</span><br><span class="line">str1+=str2;</span><br></pre></td></tr></table></figure>
+<p>string类IO</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char charr[20];</span><br><span class="line">string str;</span><br><span class="line">cout &gt;&gt; strlen(charr);//输出随机</span><br><span class="line">cout &gt;&gt;str.size();// 输出0</span><br></pre></td></tr></table></figure>
+<p>strlen(charr)之所以输出随机，是因为，首先，初始化的数组内容时未定义的，其次，函数strlen()从数组的第一个元素开始计算字符数，直到遇到空字符（不包括空字符）。</p>
+<p>另外，读取行操作时，c风格字符串也和string类不同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cin.getline(charr,20);</span><br><span class="line">getline(cin,str);</span><br></pre></td></tr></table></figure>
+<p>C风格字符串使用空字符来标记字符串末尾，而string对象不使用空字符来标记字符串末尾。</p>
+<h3 id="3-3-结构、共用体"><a href="#3-3-结构、共用体" class="headerlink" title="3.3 结构、共用体"></a>3.3 结构、共用体</h3><p>可以将结构作为参数传递给函数，也可以让函数返回一个结构。另外，还可以使用赋值符号=将结构赋给另一个同类型的结构，这样结构中每个成员将被设置为另一个结构中相应成员的值，即时成员是数组，这被称为成员赋值（允许成员数组赋值，但是不允许数组赋值）。</p>
+<p>共用体union是一种数据格式，能够存储不同的数据类型，但同时只能存储其中的一种类型。因此，共用体的长度为其最大成员的长度。其用途之一是，当数据项使用两种或以上（但不会同时使用）种格式时，可节省空间。</p>
+<p>枚举enum提供了创建福符号常量的方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum spectrum &#123;red,orange,yellow,green,blue,violet,indigo,ultraviolent&#125;;</span><br></pre></td></tr></table></figure>
+<p>默认情况下，将整数值赋给枚举量，第一个为0，第二个为1等。也可以通过显示指定整数值来覆盖默认值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum bits&#123;one=1,two=2,four=4,eight=8&#125;;</span><br><span class="line">enum bigstep&#123;first,second=100,third&#125;;//没有初始化的枚举量的值将比其前面的枚举量大1，因此third默认为101</span><br></pre></td></tr></table></figure>
+<p>在不进行强制类型转换时，只能将定义枚举时使用的枚举量赋值给在这种枚举的变量。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spectrum band;</span><br><span class="line">band=blue;</span><br></pre></td></tr></table></figure>
+<p>对于枚举，置定义了赋值运算符，没有为枚举定义算术运算符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">band=orange;</span><br><span class="line">band=orange+red;//invalid</span><br></pre></td></tr></table></figure>
+<p>枚举量是整型，可被提升为int类型，但是int类型不能自动转换为枚举类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int color=blue;//将枚举提升为int</span><br><span class="line">band=3;//invalid，不能将int赋给枚举类型</span><br></pre></td></tr></table></figure>
+<p>但是，如果int值是有效的，则可通过强制类型转换，将它赋给枚举变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">band=spectrum(3);</span><br><span class="line">enum bits&#123;one=1,two=2,four=4,eight=8&#125;;</span><br><span class="line">bits myflag;</span><br><span class="line">myflag=bits(6);//valid，虽然6不是枚举值，但是它位于枚举定义的取值范围。</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-指针和自由存储空间"><a href="#3-4-指针和自由存储空间" class="headerlink" title="3.4 指针和自由存储空间"></a>3.4 指针和自由存储空间</h3><p>指针是一个变量，其存储的是值的地址，而不是值本身。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int jump=23;</span><br><span class="line">int * pe=&amp;jump;</span><br><span class="line">cout &gt;&gt; *pe;//等价于 cout &gt;&gt; jump;</span><br><span class="line">cout &gt;&gt; pe;//等价于cout &gt;&gt; &amp;jump;</span><br></pre></td></tr></table></figure>
+<p>注意，对于每一个指针变量名，都需要一个*:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int *p1,p2;//创建一个指向int的指针p1，和一个int变量p2</span><br></pre></td></tr></table></figure>
+<p>注意，一定要在对指针应用解除引用运算符*之前，将指针初始化为一个确定的、适当的地址。下面的代码中，fellow确实是一个指针，但是它的指向不确定，只是给它指向的地方存储了数字223323。至于223323存到了哪里是未知的，有可能223323覆盖了程序段的地址，将会造成隐匿，难以跟踪的bug。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">long *fellow;</span><br><span class="line">*fellow=223323;</span><br></pre></td></tr></table></figure>
+<p>另外，指针不是整型，不能简单的将整数赋值给指针，会类型不匹配。如果要将数字值作为地址来使用，应通过强制类型转换将数字转换为合适的地址类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int *pt;</span><br><span class="line">pt=0xb800000;//类型不匹配</span><br><span class="line">pt=(int *)0xb800000;//强制类型转换</span><br></pre></td></tr></table></figure>
+<p><strong>使用new和delete</strong></p>
+<p>delete 指针变量，只是释放指针指向的内存，不会删除指针变量本身，还可以将指针变量指向另一块内存。使用new和delete时，应该遵守以下规则：</p>
+<ul>
+<li><p>不要使用delete来释放不是new分配的内存；</p>
+</li>
+<li><p>不要使用delete释放同一块内存块两次。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int *ps=new int;</span><br><span class="line">int *pq=ps;</span><br><span class="line">delete pq;</span><br><span class="line">delete ps;//二次释放同一块内存块。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果使用new[] 为数组分配内存，则应使用delete[]来释放。</p>
+</li>
+<li><p>如果使用new为一个实体分配内存，则应使用delete（没有方括号）来释放。</p>
+</li>
+<li><p>对空指针应用delete是安全的。</p>
+</li>
+</ul>
+<h3 id="3-5-指针、数组和指针算术"><a href="#3-5-指针、数组和指针算术" class="headerlink" title="3.5 指针、数组和指针算术"></a>3.5 指针、数组和指针算术</h3><p>如下程序，首先使用new创建一个包含10个int元素的数组，new返回第一个元素的地址，赋给指向int的指针变量psome。然后，访问元素时，只需要把指针当做数组名使用即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int *psome=new int[10];</span><br><span class="line">psome[0]=0.2;</span><br><span class="line">psome[1]=0.3;</span><br><span class="line">cout &gt;&gt;psome[0];//0.2</span><br></pre></td></tr></table></figure>
+<p>指针与数组基本等价。区别有二：</p>
+<ul>
+<li><p>可以修改指针的值，而数组名是常量。</p>
+</li>
+<li><p>对数组应用sizeof运算符得到的是数组的长度，而对指针应用sizeof得到的是指针的长度，即使指针指向一个数组，这种情况下不会把数组名解释为地址。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">double wages[3]=&#123;1000.0,2000.0,3000.0&#125;;</span><br><span class="line">double * pw=wage;//等价于double *pw=&amp;wages[0];</span><br><span class="line">pw=pw+1;//指向wages[1];</span><br><span class="line">wages=wages+1;//not allowed</span><br><span class="line">cout &gt;&gt; sizeof(wages);//24;</span><br><span class="line">cout &gt;&gt; sizeof(pw);//4</span><br></pre></td></tr></table></figure>
+<p>注意，数组名被解释为其第一个元素的地址，而对数组名取地址，得到的是整个数组的地址。下面程序中，虽然&amp;tell[0]和&amp;tell的地址相同，但是&amp;tell[0]是一个两字节内存块的地址，而&amp;tell是一个20字节内存块的地址，因此tell+1将地址值加2，而&amp;tell+1将地址值加20。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">short tell[10];</span><br><span class="line">cout &lt;&lt;tell://等价于&amp;tell[0]</span><br><span class="line">cout &lt;&lt; &amp;tell;//等价于整个数组的地址</span><br></pre></td></tr></table></figure>
+<p><strong>指针和字符串</strong></p>
+<p>在cout和大多数C++表达式中，char数组名，char指针以及引号括起来的字符串常量都被解释为字符串的第一个字符的地址。</p>
+<p>下面程序中，flower是包含字符r的char元素的地址，cout对象认为char的地址是字符串的地址，因此它打印该地址处的字符，然后继续打印后面的字符，直到遇到空字符\0为止。即如果给cout提供一个字符的地址，则它将从该字符开始打印，知道遇到空字符为止。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">char flower[10]=&quot;rose&quot;;</span><br><span class="line">cout&lt;&lt; flower&lt;&lt;&quot;s are red\n&quot;;</span><br></pre></td></tr></table></figure>
+<p>字符串（C风格的字符串）赋值给数组，不能使用赋值运算符，而是需要strcpy()或者strncpy()：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">char food[20]=&apos;carrots&apos;;</span><br><span class="line">strcpy(food,&quot;flan&quot;);//使用strcpy()将字符串&quot;flan&quot;赋值给数组food，第一个参数是目标地址，第二个参数是要复制的字符串的地址。</span><br><span class="line">food=&quot;flan&quot;;//这将修改food地址，使其指向&quot;flan&quot;。</span><br></pre></td></tr></table></figure>
+<p><strong>使用new创建动态结构</strong></p>
+<p> 创建动态结构语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inflatable *ps=new inflatable;</span><br></pre></td></tr></table></figure>
+<p>这种方式创建的结构只知道它的地址，而不知道它的结构名，因此不能使用成员运算符句号访问结构inflatable的成员，而应该使用以下方式：</p>
+<ul>
+<li>ps-&gt;price;（标识符是指向结构的指针，使用箭头运算符）</li>
+<li>(<em>ps).price（ps是地址，\</em>ps是结构。当标识符是结构名，使用句号运算符）</li>
+</ul>
+<p><strong>数组，vector和array</strong></p>
+<ul>
+<li>模板类vector：动态数组，可以允许数组追加，插入。内部自动使用new和delete来管理内存。其中元素存放于自由存储区或者堆。但是效率低下。</li>
+<li>aray：长度固定，使用栈（静态内存分配），效率同数组，但更有效、更安全。</li>
+<li>数组：长度固定，使用栈（静态内存分配）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int fr[3]=&#123;1,2,3&#125;;</span><br><span class="line">fr[-1]=6;</span><br></pre></td></tr></table></figure>
+<p><code>fr[-1]=6;</code>等价于<code>*(fr-1)=6</code>，含义是找到fr指向的地址，向前移一个int元素，然后在此处存储6。这句话不会报错，但是会非法访问。</p>
+<h2 id="4，一些运算"><a href="#4，一些运算" class="headerlink" title="4，一些运算"></a>4，一些运算</h2><p><strong>递增递减运算符优先级</strong></p>
+<ul>
+<li><p>前缀递增、前缀递减和解除引用运算符的优先级相同，以从右到左的方式进行结合；</p>
+</li>
+<li><p>后缀递增、后缀递减的优先级相同，但比前缀运算符的优先级高，这两个运算符以从左到右的方式结合；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*++pt;//优先级相同，从右到左，所以先++pt,再解除引用*</span><br><span class="line">++*pt;//先解除引用得到值，再对值进行加1，此时指针pt所指地址不变</span><br><span class="line">*pt++;//先pt++，再解除引用</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>逗号连接符</strong></p>
+<p>逗号可以将两个或多个表达式放到一起。另外，逗号运算符是一个顺序点，确保先计算第一个表达式，再计算第二个表达式。规定，逗号表达式的值是第二个表达式的值。并且，逗号运算符的优先级是最低的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cata=17,240;//赋值运算优先级高，因此解释为(cata=17),240</span><br><span class="line">cats=(17,240);//cats=240</span><br></pre></td></tr></table></figure>
+<p><strong>关系表达式</strong></p>
+<p>关系表达式有&lt;,&lt;=,&gt;,&gt;=,==,!=六种，可以用于数字，字符，String类对象，但是不能用于C-风格字符串。</p>
+<p>C风格的字符串比较时，<code>“word”==&quot;mate&quot;</code>比较地址（分别表示该字符串的地址）；<code>strcmp(“word”,&quot;mate&quot;)</code>比较值。</p>
+<p>当至少有一个操作数为String时，另一个操作数可以是String对象，也可以是C风格字符串或者字符数组名，此时可以使用String类的类重载运算符==判断值相等。</p>
+<p><strong>逻辑运算符</strong></p>
+<p>C++确保程序从左到右进行计算逻辑表达式，并且在知道答案后立即停止。</p>
+<p>运算符优先级：!&gt;AND&gt;OR</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/free356.github.io/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/free356.github.io/tags/programming/" rel="tag"># programming</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/free356.github.io/2020/04/18/论文阅读：The-Graph-Traversal-Pattern/" rel="next" title="论文阅读：The Graph Traversal Pattern">
+                <i class="fa fa-chevron-left"></i> 论文阅读：The Graph Traversal Pattern
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/free356.github.io/images/head_icon.jpg" alt="LH">
+            
+              <p class="site-author-name" itemprop="name">LH</p>
+              <p class="site-description motion-element" itemprop="description">学习，永无止境</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/free356.github.io/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/free356.github.io/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/free356.github.io/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1，认识C"><span class="nav-text">1，认识C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，C-基本数据类型"><span class="nav-text">2，C++基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-C-变量："><span class="nav-text">2.1 C++变量：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-基本类型"><span class="nav-text">2.2 基本类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，复合类型"><span class="nav-text">3，复合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-数组"><span class="nav-text">3.1 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-字符串"><span class="nav-text">3.2 字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-结构、共用体"><span class="nav-text">3.3 结构、共用体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-指针和自由存储空间"><span class="nav-text">3.4 指针和自由存储空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-指针、数组和指针算术"><span class="nav-text">3.5 指针、数组和指针算术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4，一些运算"><span class="nav-text">4，一些运算</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LH</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/free356.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/free356.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/free356.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/free356.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/free356.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/free356.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/free356.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/free356.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/free356.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/free356.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/free356.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/free356.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/free356.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("O2CT7VwmutpQjWhT3D31LDtH-gzGzoHsz", "iNJSezRiLE2qu4Ge4HOWkFm3");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
