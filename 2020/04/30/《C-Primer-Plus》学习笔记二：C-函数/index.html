@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="paper,">
+  <meta name="keywords" content="C++,programming,">
 
 
 
@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="本文讨论了图遍历模式及其在计算中的使用。 1，介绍图形在现实世界中所采用的结构决定了应用于图形的操作的效率。正是那些有效的图形操作产生了非常规的问题解决风格。这种交互的方式被称为图遍历模式。 2，图的实现关系数据库自1960年代末开始出现，并且是当今最主要的数据管理工具。 关系数据库维护表的集合。 每个表可以由一组行和一组列定义。 从语义上说，行表示对象，列表示属性。 因此，特定行处的基准是该行对">
-<meta name="keywords" content="paper">
+<meta name="description" content="1，C++函数使用三步骤 提供函数的定义  提供函数原型 调用函数   C++对于返回值的类型有一定限制：不能是数组，但可以是其他任何类型—整数、浮点数、指针、甚至结构或对象（C++函数不能直接返回数组，但可以将数组作为结构或对象的组成部分返回）  传递常规变量时，函数将使用原变量的拷贝（按值传递） 传递数组时，函数将使用原来的数组。（数组名是第一个元素的地址） 2，函数与指针指针和const 有">
+<meta name="keywords" content="C++,programming">
 <meta property="og:type" content="article">
-<meta property="og:title" content="论文阅读：The Graph Traversal Pattern">
-<meta property="og:url" content="https://free356.github.io/2020/04/18/论文阅读：The-Graph-Traversal-Pattern/index.html">
+<meta property="og:title" content="《C++ Primer Plus》学习笔记二：C++函数">
+<meta property="og:url" content="https://free356.github.io/2020/04/30/《C-Primer-Plus》学习笔记二：C-函数/index.html">
 <meta property="og:site_name" content="free356">
-<meta property="og:description" content="本文讨论了图遍历模式及其在计算中的使用。 1，介绍图形在现实世界中所采用的结构决定了应用于图形的操作的效率。正是那些有效的图形操作产生了非常规的问题解决风格。这种交互的方式被称为图遍历模式。 2，图的实现关系数据库自1960年代末开始出现，并且是当今最主要的数据管理工具。 关系数据库维护表的集合。 每个表可以由一组行和一组列定义。 从语义上说，行表示对象，列表示属性。 因此，特定行处的基准是该行对">
+<meta property="og:description" content="1，C++函数使用三步骤 提供函数的定义  提供函数原型 调用函数   C++对于返回值的类型有一定限制：不能是数组，但可以是其他任何类型—整数、浮点数、指针、甚至结构或对象（C++函数不能直接返回数组，但可以将数组作为结构或对象的组成部分返回）  传递常规变量时，函数将使用原变量的拷贝（按值传递） 传递数组时，函数将使用原来的数组。（数组名是第一个元素的地址） 2，函数与指针指针和const 有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/free356/figureBed/master/img/grapTraversal_relationTable.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/free356/figureBed/master/img/grapTraversal_graphExample.png">
-<meta property="og:updated_time" content="2020-04-18T11:56:41.873Z">
+<meta property="og:updated_time" content="2020-04-30T12:56:06.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="论文阅读：The Graph Traversal Pattern">
-<meta name="twitter:description" content="本文讨论了图遍历模式及其在计算中的使用。 1，介绍图形在现实世界中所采用的结构决定了应用于图形的操作的效率。正是那些有效的图形操作产生了非常规的问题解决风格。这种交互的方式被称为图遍历模式。 2，图的实现关系数据库自1960年代末开始出现，并且是当今最主要的数据管理工具。 关系数据库维护表的集合。 每个表可以由一组行和一组列定义。 从语义上说，行表示对象，列表示属性。 因此，特定行处的基准是该行对">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/free356/figureBed/master/img/grapTraversal_relationTable.png">
+<meta name="twitter:title" content="《C++ Primer Plus》学习笔记二：C++函数">
+<meta name="twitter:description" content="1，C++函数使用三步骤 提供函数的定义  提供函数原型 调用函数   C++对于返回值的类型有一定限制：不能是数组，但可以是其他任何类型—整数、浮点数、指针、甚至结构或对象（C++函数不能直接返回数组，但可以将数组作为结构或对象的组成部分返回）  传递常规变量时，函数将使用原变量的拷贝（按值传递） 传递数组时，函数将使用原来的数组。（数组名是第一个元素的地址） 2，函数与指针指针和const 有">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://free356.github.io/2020/04/18/论文阅读：The-Graph-Traversal-Pattern/">
+  <link rel="canonical" href="https://free356.github.io/2020/04/30/《C-Primer-Plus》学习笔记二：C-函数/">
 
 
 
 
 
-  <title>论文阅读：The Graph Traversal Pattern | free356</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>《C++ Primer Plus》学习笔记二：C++函数 | free356</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -256,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://free356.github.io/free356.github.io/2020/04/18/论文阅读：The-Graph-Traversal-Pattern/">
+    <link itemprop="mainEntityOfPage" href="https://free356.github.io/free356.github.io/2020/04/30/《C-Primer-Plus》学习笔记二：C-函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LH">
@@ -273,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">论文阅读：The Graph Traversal Pattern</h1>
+          <h1 class="post-title" itemprop="name headline">《C++ Primer Plus》学习笔记二：C++函数</h1>
         
 
         <div class="post-meta">
@@ -285,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-18T13:07:35+08:00">
-                2020-04-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-30T20:54:38+08:00">
+                2020-04-30
               </time>
             
 
@@ -308,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/free356.github.io/categories/图数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">图数据库</span>
+                  <a href="/free356.github.io/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
                   </a>
                 </span>
 
@@ -325,7 +322,7 @@
 
           
           
-             <span id="/free356.github.io/2020/04/18/论文阅读：The-Graph-Traversal-Pattern/" class="leancloud_visitors" data-flag-title="论文阅读：The Graph Traversal Pattern">
+             <span id="/free356.github.io/2020/04/30/《C-Primer-Plus》学习笔记二：C-函数/" class="leancloud_visitors" data-flag-title="《C++ Primer Plus》学习笔记二：C++函数">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -356,41 +353,89 @@
       
 
       
-        <p>本文讨论了图遍历模式及其在计算中的使用。</p>
-<h2 id="1，介绍"><a href="#1，介绍" class="headerlink" title="1，介绍"></a>1，介绍</h2><p>图形在现实世界中所采用的结构决定了应用于图形的操作的效率。正是那些有效的图形操作产生了非常规的问题解决风格。这种交互的方式被称为图遍历模式。</p>
-<h2 id="2，图的实现"><a href="#2，图的实现" class="headerlink" title="2，图的实现"></a>2，图的实现</h2><p>关系数据库自1960年代末开始出现，并且是当今最主要的数据管理工具。 关系数据库维护表的集合。 每个表可以由一组行和一组列定义。 从语义上说，行表示对象，列表示属性。 因此，特定行处的基准是该行对象的column属性值。 通常，问题域是在多个表上建模的，以避免数据重复。 此过程称为数据规范化。 为了统一不同表中的数据，使用了“联接”（join）。 当一个表的列引用另一表的列时，联接将合并两个表。 将这些引用保持在一致状态称为引用完整性。 这是经典的关系数据库设计，为他们提供了灵活性。</p>
-<p>与之形成鲜明对比的是，图形数据库不会将数据存储在不同的表中。相反，只有一个数据结构-图形。此外，由于每个顶点和边都直接引用其相邻的顶点或边，因此没有“连接”操作的概念。数据结构已经被定义的边“连接”了。此模型有优点也有缺点。</p>
-<p>首先，主要缺点是难以对图形进行分片（维护引用完整性的关系数据库也遇到了此困难）。分片是在多个计算机上对数据进行分区的过程，以在水平方向上扩展系统。在图中，顶点和边之间没有约束并且直接的引用，通常不存在干净的数据分区。因此，很难将图形数据库扩展到超出一台机器的范围，同时保持跨碎片边界的遍历速度。但是，以这个缺点为代价有一个明显的优点：检索相邻顶点或边的时间成本恒定。也就是说，无论图形的整体大小如何，在顶点或边的局部读取操作的成本都保持不变。这种好处是如此重要，以至于它创造了用户与图形数据库进行交互的主要手段-遍历。图为数据提供了一个独特的优势，在这里，问题的解决方案被视为通过其顶点和边缘的抽象定义的遍历。</p>
-<h3 id="2-1，关系表的索引"><a href="#2-1，关系表的索引" class="headerlink" title="2.1，关系表的索引"></a>2.1，关系表的索引</h3><p>通过建立索引，关系型数据库虽然可以使得线性搜索达到O(log2n)的时间复杂度（通过二叉搜索数实现），但是关系型数据库不擅长处理数据之间的关系。</p>
-<p>假设有一个简单的示例，其中有两个表：一个person表和一个friend表。 person表具有以下两列：唯一标识符和姓名。 friend表具有以下两列：person_ a和person_ b，语义是，person_ a与person_ b是朋友。 假设有一个问题，即确定所有Alberto朋友的名字。 图1和下面的列表将这个简单的查询细分为产生结果必须发生的所有微操作。</p>
-<p><img src="https://raw.githubusercontent.com/free356/figureBed/master/img/grapTraversal_relationTable.png" alt="grapTraversal_relationTable" style="zoom:50%;"></p>
-<ol>
-<li>查询person.name索引以查找名称为“ Alberto Pepe”的一行。 [O(log2n)]</li>
-<li>给定索引，返回person行，获取该行的标识符。[O(1)]</li>
-<li>查询friend.person_a的索引以在friend中查找具有前一个标识符的所有行。 [O(log2x)] </li>
-<li>给定返回的k行中的每行，获取这些行的person_b标识符。[O(k)]</li>
-<li>对于每k个朋友标识符，查询person.identifier索引以获取具有朋友标识符的行。 [O(k log2n)]</li>
-<li>给定k个person行，获取这些行的name值。[O(k)]</li>
+        <h3 id="1，C-函数使用三步骤"><a href="#1，C-函数使用三步骤" class="headerlink" title="1，C++函数使用三步骤"></a>1，C++函数使用三步骤</h3><ol>
+<li>提供函数的定义 </li>
+<li>提供函数原型</li>
+<li>调用函数</li>
 </ol>
-<p>通过连接操作，最后可得到Alberto的朋友的名字，实际上，联接操作形成了一个图，该图是在一个表链接到另一表时动态构建的。尽管具有能够动态构造图的好处，但局限在于该图在关系结构中不是显式的，而是必须通过一系列索引密集型操作来推断。此外，虽然可能只需要数据库中数据的特定子集（例如，仅Alberto的朋友），但必须检查所有查询表中的所有数据，以提取所需子集（例如，所有人的所有朋友）。即使O(log2n)的读取时间对于搜索来说是快速的，但是随着索引随着数据的增长而增大，并且随着使用更多的联接操作，该模型的效率也会降低。在极限情况下，通过图数据库可以最好地解决通过联接构造的推断图。</p>
-<h3 id="2-2，图作为索引"><a href="#2-2，图作为索引" class="headerlink" title="2.2，图作为索引"></a>2.2，图作为索引</h3><p>大多数图论都与单关系图定理的发展有关。单个关系图维护一组边，其中所有边的含义均相同。例如，所有边缘都表示友谊或亲属关系，但在同一结构中不能同时表示两者。在应用中，复杂的领域模型更方便地由多关系属性图表示。属性图中的边被typed或labeled，因此，边在含义上是异质的。例如，一个属性图可以在同一结构内对友谊，亲戚关系，业务，沟通等关系进行建模。此外，属性图中的顶点和边维护一组键/值对，这些被称为属性，并允许表示非图形数据，例如结点名称，边的权重等。正式地，一个属性图可以定义为G =(V,E,λ,μ)，其中边是有向的（即$E \subseteq$ (V×V)），边缘被标记（即λ:E→Σ），属性是从元素和键到值的映射（即$μ:(V \bigcup E$）×R→S)。</p>
-<p>在前面的关系示例中，person表中的人员具有两个属性：唯一标识符和姓名。 类似的信息标识符和姓名值将在属性图中表示为顶点属性。 而且，friend表不会以表的形式存在，而是以顶点之间的直接由朋友标记的边的形式存在。 这个想法如图2所示。下面提供了用于查找Alberto所有朋友的名字的微操作。</p>
-<p><img src="https://raw.githubusercontent.com/free356/figureBed/master/img/grapTraversal_graphExample.png" alt="grapTraversal_graphExample" style="zoom:50%;"></p>
-<ol>
-<li>查询vertex.name索引以找到G中所有名称为“ Alberto Pepe”的顶点。 [O(log2n)]</li>
-<li>给定返回的顶点，获取从该顶点发出的k个朋友边。 [O(k + x)] </li>
-<li>给定检索到的k个朋友边，获取这些边的头上的k个顶点。 [O(k)]</li>
-<li>给定这k个顶点，获取这些顶点的k个姓名属性。 [O(ky)] </li>
-</ol>
-<p>最后的操作产生了Alberto的朋友的名字。 在图形数据库中，因为顶点保持对其相邻边的直接引用，所以没有显式的联接操作。 在许多方面，图的边缘充当显式的“硬连线”连接结构（即，在关系数据库中在查询时未计算的结构）。 越过边的动作就是join的动作。 但是，在图形数据库中使其更有效的原因是，从一个顶点到另一个顶点的遍历是恒定时间的操作。 因此，遍历时间仅由遍历所接触的元素数来定义。 这与整个图的大小/拓扑无关。 遍历中执行单个步骤所花费的时间由围绕其遍历的特定顶点的子图的局部拓扑决定。</p>
-<p>当通过多个步骤以通过路径将不同的顶点（即未直接连接的顶点）结合在一起时，图形数据库的真正威力就显而易见了。 首先，没有O(log2n)操作。 其次，采用的路径类型定义了两个顶点之间存在的“高阶”推断关系。基于抽象定义的路径的遍历是图遍历模式的核心。 下一节讨论图遍历模式及其在常见问题解决情况中的应用。</p>
 <blockquote>
-<p>除了上述显而易见的性能优势外，灵活性和敏捷性也是图数据库相比关系型数据库的重要优势。图天生就是灵活可扩展的，可以对已存在的图结构增加新的边、节点、标签和子图，但却不会破坏现有的查询和应用程序的功能。这就使我们无需在项目之初，对数据的真实模样和复杂度缺乏了解的情况下被迫设计成最终而完整的数据模型，往往这样的模型并不是最终和完整的。</p>
-<p>另一方面，有些业务本身就是灵活多变的，或者说敏捷的。使用图数据库（或其他NoSQL数据库，比如MongoDB）可以快速跟上业务的变化而不需要进行Schema变更等代价不菲的管理操作。</p>
+<p>C++对于返回值的类型有一定限制：不能是数组，但可以是其他任何类型—整数、浮点数、指针、甚至结构或对象（C++函数不能直接返回数组，但可以将数组作为结构或对象的组成部分返回）</p>
 </blockquote>
-<h2 id="3，图遍历"><a href="#3，图遍历" class="headerlink" title="3，图遍历"></a>3，图遍历</h2><p>遍历是指以某种算法方式访问图中的元素（即顶点和边）。本节将介绍一种基于功能的，基于流程的方法遍历属性图以及如何在不同类型的图形数据集上进行不同类型的遍历以支持不同类型的问题解决。</p>
-<p>图上最原始的基于读取的操作是从元素$i$到元素$j$的单步遍历，其中$i，j\in(V∪E)$。 例如，单步操作可以回答诸如“从此顶点向外伸出哪些边？”，“哪个顶点在此边的头部？”等问题。单步操作可以在图形中显示显式邻接（即 “硬连线”式的邻接）。 以下列表逐项列出了各种类型的单步遍历。 请注意，这些运算是在幂多集域和范围上定义的。这样做的原因是自然地允许函数组合，其中组合是对遍历的正式描述。</p>
-
+<p>传递常规变量时，函数将使用原变量的拷贝（按值传递）</p>
+<p>传递数组时，函数将使用原来的数组。（数组名是第一个元素的地址）</p>
+<h3 id="2，函数与指针"><a href="#2，函数与指针" class="headerlink" title="2，函数与指针"></a>2，函数与指针</h3><p><strong>指针和const</strong></p>
+<p>有两种指针和const的结合：</p>
+<p>1）const指向一个常量对象，可以防止使用该指针来修改所指向的对象；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int age=12;</span><br><span class="line">const int *pt=&amp;age;//不能使用pt来修改指向的值age，但是可以修改pt的指向。</span><br></pre></td></tr></table></figure>
+<p>2）将指针本身声明为常量，可以防止改变指针指向的位置；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int age=12;</span><br><span class="line">int * const finger=&amp;age;//finger只能指向age，但运行使用finger修改age的值。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果数据类型本身并不是指针（当且仅当只有一层间接关系），则可以将const数据或者非const数据的地址赋给指向const的指针，但只能将非const数据的地址赋给非const指针（<strong>const指针可以接收const或者非const数据的地址，但是非const指针只能接收非const数据的地址。</strong><br>）</p>
+</blockquote>
+<p><strong>数据指针和指针数组</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int *arr[4];//指针数组，四个元素都是指向int值的指针</span><br><span class="line">int (*arr)[4];//数组指针，指向含有4个int的数组的指针</span><br></pre></td></tr></table></figure>
+<p><strong>函数指针</strong></p>
+<p>函数地址：函数名即代表函数的地址；</p>
+<p>函数指针声明：声明函数指针只需要将函数名替换为(*pf)即可，此时pf就是这类函数的指针。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">double pan(int);</span><br><span class="line">double (*pf) (int);//pf指向一个参数为int，返回值为double的函数</span><br><span class="line">double *pf(int);//pf是一个函数，该函数返回double指针</span><br></pre></td></tr></table></figure>
+<p>函数调用：可以使用<code>(*pf)()</code>调用，也可以直接使用<code>pf()</code>调用。</p>
+<h3 id="3，函数与字符串"><a href="#3，函数与字符串" class="headerlink" title="3，函数与字符串"></a>3，函数与字符串</h3><p>C+提供了三种表示C-风格字符串的方法，字符数组、字符串常量和字符串指针。它们的类型都是char<em>（char指针），因此当它们作为实参时，函数形参可以为char </em>。另外，为了表示字符串，可以增加一个表示字符串长度的形参。</p>
+<p>当字符串为string类时，函数可以接受string对象作为参数以及将string对象作为返回值，string类的方法size()可以判断其存储的字符串的长度。</p>
+<p><strong>内联函数</strong></p>
+<p>使用内联函数时，编译器将使用对应的函数代码替换函数调用，以空间换取时间。</p>
+<p>要使用内联函数，需在函数声明前加上关键字inline或者再函数定义前加inline。通常，可将整个定义放在本应提供原型的地方。</p>
+<p>内联函数适合代码量比较短，且不能是递归函数。</p>
+<h3 id="4，引用变量"><a href="#4，引用变量" class="headerlink" title="4，引用变量"></a>4，引用变量</h3><p>引用变量必须在声明时将其初始化，并且一旦与某个变量关联起来，就将一直效忠于它。</p>
+<p>可以通过初始化声明来设置引用，但不能通过赋值来确定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int rats=101;</span><br><span class="line">int *pt=&amp;rats;</span><br><span class="line">int &amp; rodents=*pt;//rodents是rats的别名</span><br><span class="line">int bunnies=50;</span><br><span class="line">pt=&amp;bunnies;//rodents依然是rats的别名</span><br></pre></td></tr></table></figure>
+<p><strong>const引用变量做函数形参</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double refube(const double &amp;ra);</span><br></pre></td></tr></table></figure>
+<p>当引用参数声明为常量数据的引用的理由有三个：</p>
+<ul>
+<li><p>使用const可以避免无意中修改数据的编程错误。（在定义函数时，如果只希望函数使用传递给它的信息，而不对这些信息进行修改，同时又想使用引用，则应在函数原型和函数头中使用const。）</p>
+</li>
+<li><p>使用const使函数能处理const和非const实参，否则只能接受非const数据。（不能把const数据传给非const引用）。</p>
+</li>
+<li><p>使用const引用使函数能够正确生成并使用临时变量。</p>
+<blockquote>
+<p> （传递引用时，实参必须是变量，变量即可以被赋值的。当实参不是变量时，且为以下两种情况，将创建临时变量：</p>
+<ul>
+<li>实参的类型正确，但不是左值。如表达式、常量。</li>
+<li>实参的类型不正确，但是可以转换为正确的类型。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><strong>当函数返回引用时</strong></p>
+<p>不能返回临时变量的引用，会有警告，并且运行后，可能导致程序崩溃。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//free_throw is a struct</span><br><span class="line">const free_throw &amp; clon(free_throw &amp; ft)&#123;</span><br><span class="line">    free_throw newquy;</span><br><span class="line">    newquy=ft;</span><br><span class="line">    return newquy;//程序试图引用已经释放的内存</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决办法有两个：</p>
+<ul>
+<li>返回一个作为参数传递给函数的引用（将要返回的作为形参）。</li>
+<li>使用new分配新的存储空间，并返回指向该内存空间的指针。</li>
+</ul>
+<p><strong>将const用于引用返回类型</strong></p>
+<p>当返回的引用加了const后，则成为不可修改的左值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const free_throw &amp; clon(free_throw &amp; ft);</span><br><span class="line">clon(ft)=ft2;//这是非法的，因为clon(ft)返回的是const引用</span><br></pre></td></tr></table></figure>
+<p>子类的引用可以被赋值给基类，从而实现多态。</p>
+<h3 id="5，默认参数"><a href="#5，默认参数" class="headerlink" title="5，默认参数"></a>5，默认参数</h3><p>如果函数省略了相应的参数，则程序使用默认值；</p>
+<p>只能在参数列表中从右到左提供默认参数，因此，如果为某个参数提供了默认值，则必须为该参数右边的所有参数提供默认值。</p>
+<h3 id="6，函数重载"><a href="#6，函数重载" class="headerlink" title="6，函数重载"></a>6，函数重载</h3><p>如果两个函数的参数数目和类型相同，同时参数的排列顺序也相同，则它们的特征标相同。</p>
+<p>重载的函数，函数名必须相同，特征标必须不同，返回值可同可不同。</p>
+<p>当当没有匹配的原型并不会自动停止使用其中的某一个函数，C++将尝试使用标准类型转换强制进行匹配。</p>
+<p>当需要转换时，却存在多种转换方式时，将视为错误。</p>
+<p>匹配函数时，并不区分const和非const变量。</p>
+<h3 id="7，函数模板"><a href="#7，函数模板" class="headerlink" title="7，函数模板"></a>7，函数模板</h3><p>一个函数模板的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;//template&lt;clsss T&gt;</span><br><span class="line">T max(T &amp; a,T &amp;b)&#123;</span><br><span class="line">    return a&gt;b?a:b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重载的函数模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;</span><br><span class="line">void swap(T &amp;a,T &amp;b);</span><br><span class="line">template&lt;typename T&gt;</span><br><span class="line">void swap(T *a,T *b,int n);</span><br></pre></td></tr></table></figure>
+<p>模板显式具体化</p>
+<p>下面有三个原型，优先级为：非模板方法&gt;显式具体化&gt;模板方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template&lt;&gt; void swap&lt;job&gt; (job &amp;a,job &amp;b);//显式具体化</span><br><span class="line">template&lt;typename T&gt;</span><br><span class="line">void swap(T &amp;a,T &amp;b);//模板方法</span><br><span class="line">void swap(T &amp;a,T &amp;b);//非模板方法</span><br></pre></td></tr></table></figure>
+<p><strong>一个小知识点补充：cin读取数字时</strong></p>
+<p>将cin&gt;&gt;用作测试输入时，可以接受任何有效的数字输入。当遇到数字输入的时候应该尽量这样做。但是，非数字输入将会设置一个错误条件，禁止进一步读取输入。如果此时程序还需要进行输入，则必须使用<code>cin.clear()</code>重置输入，然后通过读取不合法的输入来丢弃它们。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">double temp;</span><br><span class="line">cin&gt;&gt;temp;</span><br><span class="line">if(!cin)&#123;//错误输入</span><br><span class="line">    cin.clear();</span><br><span class="line">    while(cin.get()!=&apos;\n&apos;)</span><br><span class="line">        continue;</span><br><span class="line">&#125;</span><br><span class="line">cin&gt;&gt;temp;</span><br></pre></td></tr></table></figure>
+<h3 id><a href="#" class="headerlink" title=" "></a> </h3>
       
     </div>
     
@@ -407,7 +452,9 @@
       
         <div class="post-tags">
           
-            <a href="/free356.github.io/tags/paper/" rel="tag"># paper</a>
+            <a href="/free356.github.io/tags/C/" rel="tag"># C++</a>
+          
+            <a href="/free356.github.io/tags/programming/" rel="tag"># programming</a>
           
         </div>
       
@@ -420,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/free356.github.io/2020/04/17/论文阅读：分布式图数据库GeaBase/" rel="next" title="论文阅读：分布式图数据库GeaBase">
-                <i class="fa fa-chevron-left"></i> 论文阅读：分布式图数据库GeaBase
+              <a href="/free356.github.io/2020/04/28/《C-Primer-Plus》学习笔记一：C-基础数据和运算/" rel="next" title="《C++ Primer Plus》学习笔记一：C++基础数据和运算">
+                <i class="fa fa-chevron-left"></i> 《C++ Primer Plus》学习笔记一：C++基础数据和运算
               </a>
             
           </div>
@@ -429,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/free356.github.io/2020/04/28/《C-Primer-Plus》学习笔记一：C-基础数据和运算/" rel="prev" title="《C++ Primer Plus》学习笔记一：C++基础数据和运算">
-                《C++ Primer Plus》学习笔记一：C++基础数据和运算 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -566,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1，介绍"><span class="nav-text">1，介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，图的实现"><span class="nav-text">2，图的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1，关系表的索引"><span class="nav-text">2.1，关系表的索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2，图作为索引"><span class="nav-text">2.2，图作为索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，图遍历"><span class="nav-text">3，图遍历</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1，C-函数使用三步骤"><span class="nav-text">1，C++函数使用三步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2，函数与指针"><span class="nav-text">2，函数与指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3，函数与字符串"><span class="nav-text">3，函数与字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4，引用变量"><span class="nav-text">4，引用变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5，默认参数"><span class="nav-text">5，默认参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6，函数重载"><span class="nav-text">6，函数重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7，函数模板"><span class="nav-text">7，函数模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-text"> </span></a></li></ol></div>
             
 
           </div>
