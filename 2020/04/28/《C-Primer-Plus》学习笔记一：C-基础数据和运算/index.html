@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="本博客为系列博客，主要用来记录《C++primer plus》学习笔记。 1，认识C++先看第一个C++程序： 12345678910#include &amp;lt;iostream&amp;gt;int main()&amp;#123;    using namespace std;    cout &amp;lt;&amp;lt;&amp;apos;come up and C++ me some time&amp;apos;;    cout &amp;">
+<meta name="description" content="本博客为系列博客，主要用来提炼《C++primer plus》学习中的所需注意点，而非系统知识。 1，认识C++先看第一个C++程序： 12345678910#include &amp;lt;iostream&amp;gt;int main()&amp;#123;    using namespace std;    cout &amp;lt;&amp;lt;&amp;apos;come up and C++ me some time&amp;apos">
 <meta name="keywords" content="C++,programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《C++ Primer Plus》学习笔记一：C++基础数据和运算">
 <meta property="og:url" content="https://free356.github.io/2020/04/28/《C-Primer-Plus》学习笔记一：C-基础数据和运算/index.html">
 <meta property="og:site_name" content="free356">
-<meta property="og:description" content="本博客为系列博客，主要用来记录《C++primer plus》学习笔记。 1，认识C++先看第一个C++程序： 12345678910#include &amp;lt;iostream&amp;gt;int main()&amp;#123;    using namespace std;    cout &amp;lt;&amp;lt;&amp;apos;come up and C++ me some time&amp;apos;;    cout &amp;">
+<meta property="og:description" content="本博客为系列博客，主要用来提炼《C++primer plus》学习中的所需注意点，而非系统知识。 1，认识C++先看第一个C++程序： 12345678910#include &amp;lt;iostream&amp;gt;int main()&amp;#123;    using namespace std;    cout &amp;lt;&amp;lt;&amp;apos;come up and C++ me some time&amp;apos">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-30T12:55:13.487Z">
+<meta property="og:updated_time" content="2020-05-02T09:11:52.927Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《C++ Primer Plus》学习笔记一：C++基础数据和运算">
-<meta name="twitter:description" content="本博客为系列博客，主要用来记录《C++primer plus》学习笔记。 1，认识C++先看第一个C++程序： 12345678910#include &amp;lt;iostream&amp;gt;int main()&amp;#123;    using namespace std;    cout &amp;lt;&amp;lt;&amp;apos;come up and C++ me some time&amp;apos;;    cout &amp;">
+<meta name="twitter:description" content="本博客为系列博客，主要用来提炼《C++primer plus》学习中的所需注意点，而非系统知识。 1，认识C++先看第一个C++程序： 12345678910#include &amp;lt;iostream&amp;gt;int main()&amp;#123;    using namespace std;    cout &amp;lt;&amp;lt;&amp;apos;come up and C++ me some time&amp;apos">
 
 
 
@@ -353,7 +353,7 @@
       
 
       
-        <p>本博客为系列博客，主要用来记录《C++primer plus》学习笔记。</p>
+        <p>本博客为系列博客，主要用来提炼《C++primer plus》学习中的所需注意点，而非系统知识。</p>
 <h2 id="1，认识C"><a href="#1，认识C" class="headerlink" title="1，认识C++"></a>1，认识C++</h2><p>先看第一个C++程序：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    using namespace std;</span><br><span class="line">    cout &lt;&lt;&apos;come up and C++ me some time&apos;;</span><br><span class="line">    cout &lt;&lt; endl; </span><br><span class="line">    cout &lt;&lt; &quot;you won&apos;t regret it!&quot; &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述代码表面了一个名为main()的函数，构成了函数定义。该定义有两部分：int mian()叫函数头，花括号及其他叫函数体。</p>
@@ -503,6 +503,13 @@
 <p><strong>逻辑运算符</strong></p>
 <p>C++确保程序从左到右进行计算逻辑表达式，并且在知道答案后立即停止。</p>
 <p>运算符优先级：!&gt;AND&gt;OR</p>
+<h2 id="5，关于读取"><a href="#5，关于读取" class="headerlink" title="5，关于读取"></a>5，关于读取</h2><p><strong>cin读取数字时：</strong></p>
+<p>将cin&gt;&gt;用作测试输入时，可以接受任何有效的数字输入。当遇到数字输入的时候应该尽量这样做。但是，非数字输入将会设置一个错误条件，禁止进一步读取输入。如果此时程序还需要进行输入，则必须使用<code>cin.clear()</code>重置输入，然后通过读取不合法的输入来丢弃它们。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">double temp;</span><br><span class="line">cin&gt;&gt;temp;</span><br><span class="line">if(!cin)&#123;//错误输入</span><br><span class="line">    cin.clear();</span><br><span class="line">    while(cin.get()!=&apos;\n&apos;)</span><br><span class="line">        continue;</span><br><span class="line">&#125;</span><br><span class="line">cin&gt;&gt;temp;</span><br></pre></td></tr></table></figure>
+<p><strong>循环读取一个字母：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//循环读取一个字母</span><br><span class="line">char ch;</span><br><span class="line">while(cin&gt;&gt;ch &amp;&amp; toupper(ch)!=&apos;Q&apos;)&#123;</span><br><span class="line">    while(cin.get()!= &apos;\n&apos;)</span><br><span class="line">        continue;//删除输入行中剩余部分</span><br><span class="line">    if(!isalpha(ch))&#123;</span><br><span class="line">        cout&lt;&lt;&apos;\a&apos;;</span><br><span class="line">        continue;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;&quot;please Enter an alpha, Q to quit:&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>循环读取一行，并且可以处理输入长度大于Arsize的情况：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//循环读取一个字母</span><br><span class="line">char ch;</span><br><span class="line">while(cin&gt;&gt;ch &amp;&amp; toupper(ch)!=&apos;Q&apos;)&#123;</span><br><span class="line">    while(cin.get()!= &apos;\n&apos;)</span><br><span class="line">        continue;//删除输入行中剩余部分</span><br><span class="line">    if(!isalpha(ch))&#123;</span><br><span class="line">        cout&lt;&lt;&apos;\a&apos;;</span><br><span class="line">        continue;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;&quot;please Enter an alpha, Q to quit:&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -626,7 +633,7 @@
               
                 <a href="/free356.github.io/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -681,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1，认识C"><span class="nav-text">1，认识C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，C-基本数据类型"><span class="nav-text">2，C++基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-C-变量："><span class="nav-text">2.1 C++变量：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-基本类型"><span class="nav-text">2.2 基本类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，复合类型"><span class="nav-text">3，复合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-数组"><span class="nav-text">3.1 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-字符串"><span class="nav-text">3.2 字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-结构、共用体"><span class="nav-text">3.3 结构、共用体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-指针和自由存储空间"><span class="nav-text">3.4 指针和自由存储空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-指针、数组和指针算术"><span class="nav-text">3.5 指针、数组和指针算术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4，一些运算"><span class="nav-text">4，一些运算</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1，认识C"><span class="nav-text">1，认识C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，C-基本数据类型"><span class="nav-text">2，C++基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-C-变量："><span class="nav-text">2.1 C++变量：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-基本类型"><span class="nav-text">2.2 基本类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，复合类型"><span class="nav-text">3，复合类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-数组"><span class="nav-text">3.1 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-字符串"><span class="nav-text">3.2 字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-结构、共用体"><span class="nav-text">3.3 结构、共用体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-指针和自由存储空间"><span class="nav-text">3.4 指针和自由存储空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-指针、数组和指针算术"><span class="nav-text">3.5 指针、数组和指针算术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4，一些运算"><span class="nav-text">4，一些运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5，关于读取"><span class="nav-text">5，关于读取</span></a></li></ol></div>
             
 
           </div>
