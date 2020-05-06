@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="free356">
 <meta property="og:description" content="1，一个完整的类定义1234567891011121314151617181920#ifndf STOCK10_H_#define STOCK10_H_#include &amp;lt;string&amp;gt;class Stock&amp;#123;    private:        std::string company;        long shares;        double share_val">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-02T09:12:07.555Z">
+<meta property="og:updated_time" content="2020-05-06T12:56:34.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《C++ Primer Plus》学习笔记三：类和对象">
 <meta name="twitter:description" content="1，一个完整的类定义1234567891011121314151617181920#ifndf STOCK10_H_#define STOCK10_H_#include &amp;lt;string&amp;gt;class Stock&amp;#123;    private:        std::string company;        long shares;        double share_val">
@@ -391,7 +391,8 @@
 <p>第一种解决方法：这种方式声明枚举并不会创建类数据成员，即所有对象中并不包含枚举。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Bakery&#123;</span><br><span class="line">    private:</span><br><span class="line">        enum&#123;Months=12&#125;;</span><br><span class="line">        double costs[Months];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>第二种解决方法：这种方式创建Months常量，该常量与其他静态变量存储一起，而不会在对象中存储。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Bakery&#123;</span><br><span class="line">    private:</span><br><span class="line">        static const int Months=12;</span><br><span class="line">        double costs[Months];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Bakery&#123;</span><br><span class="line">    private:</span><br><span class="line">        static const int Months=12;//去掉const则不能初始化</span><br><span class="line">        double costs[Months];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：静态成员变量在类声明中声明，但不能在类声明中初始化，需要在包含类方法的文件中使用类作用域运算符::初始化。但是如果静态成员是const整数类型或者枚举类，则可以在声明中初始化。</p>
 <h2 id="4，作用域内枚举"><a href="#4，作用域内枚举" class="headerlink" title="4，作用域内枚举"></a>4，作用域内枚举</h2><p>传统枚举存在问题：两个枚举定义中的枚举量可能冲突。因此下述代码第二行无法通过编译。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">enum egg&#123;Small,Medium,Large,Jumbo&#125;;</span><br><span class="line">enum t_Shirt&#123;Small,Medium,Large,XLarge&#125;;</span><br></pre></td></tr></table></figure>
 <p>解决冲突问题，可定义新枚举，其作用域为类，这种方式需要使用枚举名来限定枚举量。</p>
@@ -408,6 +409,159 @@
 <li>作用域内枚举，C++11默认为int，也可指定。如添加<code>:short</code>指定底层为short。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum class :short t_Shirt&#123;Small,Medium,Large,XLarge&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="5，类中运算符重载"><a href="#5，类中运算符重载" class="headerlink" title="5，类中运算符重载"></a>5，类中运算符重载</h2><p>C++扩展了运算符重载，允许定义运算符函数，用来描述特定的运算符与类之间的关系。运算符可以是类成员函数，也可以是友元函数。</p>
+<p>如果要为类重载运算符，当运算符函数是成员函数时，则第一个操作数将是调用该函数的对象。</p>
+<p>如果需将非类的项作为其第一个操作数，则可以用友元函数来反转操作数顺序。也可以用非友元、非成员函数，此时需要在普通函数中调用成员函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Time&#123;</span><br><span class="line">    private:</span><br><span class="line">        int hours;</span><br><span class="line">        int minutes;</span><br><span class="line">    public:</span><br><span class="line">        Time operator *(double n):const;//成员函数，可以使得Time s; s+3;运行通过，但是3+s不行。</span><br><span class="line">        //如果需要使得第一个操作数不是类对象，则方式一：使用友元函数。</span><br><span class="line">        friend Time operator *(double n,const Time &amp; t);//友元函数，可以使得3+s通过。  </span><br><span class="line">&#125;</span><br><span class="line">//方式二：也可以是非成员函数，非友元函数，只需在普通函数中调用公有的成员函数。</span><br><span class="line">Time operator *(double n,const Time &amp;t)&#123;return t*m;&#125;</span><br></pre></td></tr></table></figure>
+<p>有一些运算符函数只能是类成员函数，如下：</p>
+<ul>
+<li>=：赋值运算符。</li>
+<li>()：函数调用运算符。</li>
+<li>[]：下标运算符。</li>
+<li>-&gt;：通过指针访问类成员的运算符。</li>
+</ul>
+<h2 id="6，类的自动转换和强制类型转换"><a href="#6，类的自动转换和强制类型转换" class="headerlink" title="6，类的自动转换和强制类型转换"></a>6，类的自动转换和强制类型转换</h2><p><strong>1）将其他类型值转换为类对象</strong></p>
+<p>在C++中，任何接受一个参数的构造函数（或者为其余的参数提供了默认值），都可以被用来将与参数相同类型的值转换为类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Stonewt&#123;</span><br><span class="line">    ...</span><br><span class="line">    Stonewt(double lbs);//或者Stonewt(double lbs,int stn=0);</span><br><span class="line">    //但是不能两者都有，因为仅当不存在二义性，才转换，否则出错。</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">Stonewt mycat=19.6;//隐式调用Stonewt(double)转换double为Stonewt</span><br><span class="line">Stonewt mycat(19.6);</span><br><span class="line">Stonewt mycat=Stonewt(19)</span><br></pre></td></tr></table></figure>
+<p>隐式调用Stonewt(double)将参数类型的值转换为对象的情况有以下几种：</p>
+<ul>
+<li>将Stonewt对象初始化为double的值。</li>
+<li>将double值赋值给Stonewt对象。</li>
+<li>将double值传递给接受Stonewt参数的函数。</li>
+<li>在上述任何一种情况下，使用可转换为double类型的内置类型时。（比如将int转为double，再将double转为Stonewt对象）。</li>
+</ul>
+<p>如果使用关键字explicit限定了这种构造函数，则它只能用于显示转换。</p>
+<p><strong>2）将类对象转换为其他类型</strong></p>
+<p>如果要将对象转换为其他类型，必须定义转换函数，且转换函数必须是成员函数。如 <code>operator typeName();</code>在将类对象赋值给typeName变量时或者将其强制转换为typeName类型时，将自动调用该转换函数。但是当有二义性时，将出错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Stonewt&#123;</span><br><span class="line">    ...</span><br><span class="line">    operator double();</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">double gone=mycat;//隐式转换</span><br><span class="line">double gone=(double) mycat;//显示强制类型转换</span><br></pre></td></tr></table></figure>
+<p>应谨慎使用隐式转换函数，通常，最好选择显式转换。避免隐式转换方法有二：</p>
+<p>方法一：将转换运算符声明为显示的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">explicit operator double();</span><br></pre></td></tr></table></figure>
+<p>方法二：用一个功能相同的非转换函数替换该转换函数，但仅在被显式地调用时，该函数才会执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double Stonewt::Stonewt_to_double()&#123;&#125;;</span><br><span class="line">double gone=mycat.Stonewt_to_double();</span><br></pre></td></tr></table></figure>
+<p><strong>3）一个值得注意的例子：</strong></p>
+<p>可以对成员函数参数进行转换，而不是调用成员函数的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stonewt jennyst(9);</span><br><span class="line">double kennD=176.3;</span><br><span class="line">Stonewt total;</span><br><span class="line">//将对成员函数参数进行转换，而不是调用成员函数的对象。</span><br><span class="line">total=jennyst+kennD;//调用构造函数将kennD转换为Stonewt对象.</span><br><span class="line">total=kennD+jennyst;//不会调用构造函数将kennD转换为Stonewt对象。想通过编译，需提供重载加法的友元函数。</span><br></pre></td></tr></table></figure>
+<h2 id="7，构造函数中动态分配内存"><a href="#7，构造函数中动态分配内存" class="headerlink" title="7，构造函数中动态分配内存"></a>7，构造函数中动态分配内存</h2><p>C++自动为每一个类提供了以下成员函数：</p>
+<ul>
+<li>默认构造函数，如果没有定义构造函数。（带参数的构造函数，如果所有的参数都有默认值，也是默认构造函数，注意，只能有一个默认构造函数）。</li>
+<li>默认析构函数，如果没有定义。</li>
+<li>复制构造函数（浅复制），如果没有定义。</li>
+<li>赋值运算符（浅复制），如果没有定义。</li>
+<li>地址运算符（返回this），如果没有定义。</li>
+</ul>
+<p>在类构造函数中，使用new为数据动态分配内存，然后将内存地址赋给类成员，这样，类可以处理长度不同的字符串，而不用提前固定字符串长度。</p>
+<p><strong>如果类中包含了使用new初始化、指向数据的指针，而不是数据本身，则需要：</strong></p>
+<ul>
+<li>重新定义默认构造函数，在类构造函数中使用new(new [])，</li>
+<li>重新定义析构函数，并且需在析构函数中使用和构造函数对应的delete(delete[])。</li>
+<li><p>new和delete必须兼容，如果有多个构造函数，则必须以相同的方式使用new，要么都带[]，要么都不带[]，因为只有一个析构函数，所有的构造函数需和析构函数兼容。</p>
+</li>
+<li><p>则需定义一个复制构造函数，执行深度复制，应分配空间存储并复制指向的数据，而不是指针（默认的复制构造函数执行的是浅复制）以及更新所有受影响的静态类成员。（如果类中包含静态成员，其值需在新对象创建时发生变化，则也需显式提供复制构造函数）。</p>
+</li>
+<li>需重载赋值运算符函数，在其中执行深度复制（默认的是浅复制）具体地，检查自我赋值，释放成员指针以前指向的内存，复制数据而不仅仅是数据的地址，并且返回一个指向调用对象的引用。</li>
+<li>如果不提供复制构造函数和重载赋值运算符函数，则需要将所需的复制构造函数和赋值运算定义为私有，这样：第一避免了自动生成的默认方法，第二因为私有，所以不能广泛使用。但是这样做使得对象不可以被复制，并且对象不可以按值传递或返回，需要按照引用传递。并且不可以创建临时对象。（按值传递或者返回对象，或者创建临时对象，都会调用复制构造函数）。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Stringuser&#123;</span><br><span class="line">    private:</span><br><span class="line">        cahr *str;</span><br><span class="line">        int len;</span><br><span class="line">        static int num_strings;</span><br><span class="line">    public:</span><br><span class="line">        Stringuser(const char *s);</span><br><span class="line">        Stringuser();</span><br><span class="line">        ~Stringuser();</span><br><span class="line">        Stringuser(const Stringuser &amp;);</span><br><span class="line">        Stringuser &amp; operator=(const Stringuser &amp;); </span><br><span class="line">&#125;</span><br><span class="line">Stringuser::Stringuser(const Stringuser &amp; st)&#123;</span><br><span class="line">    num_string++;//用于统计对象个数的静态成员</span><br><span class="line">    len=st.len;</span><br><span class="line">    str=new char[len+1];</span><br><span class="line">    std::strcpy(str,st.str);    </span><br><span class="line">&#125;</span><br><span class="line">Stringuser &amp; Stringuser::operator=(const Stringuser &amp; st)&#123;</span><br><span class="line">    if(this==&amp;st)</span><br><span class="line">        return *this;</span><br><span class="line">    delete[] str;//如果不delete，则字符串将会保留在内存，程序不包含指向该字符串的指针，因此造成内存浪费。</span><br><span class="line">    len=st.len;</span><br><span class="line">    str=new char[len+1];</span><br><span class="line">    std::strcpy(str,st.str); </span><br><span class="line">    return *this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果类中包含的成员使用了动态内存分配，此时该类并不需要重新编写复制构造函数和赋值运算符，因为默认的逐成员复制和赋值行为有一定智能，逐成员复制和赋值将使用成员类型定义的复制构造函数和赋值运算符。但是，如果Magzine类因其他成员需要定义复制构造函数和赋值运算符时，则需要显式调用Stringuser的复制构造函数和赋值运算符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Magzine&#123;</span><br><span class="line">    private:</span><br><span class="line">        Stringuser title;</span><br><span class="line">    ...         </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>复制构造函数</strong></p>
+<p>复制构造函数用于将一个对象复制到新创建的对象中，每当程序生成对象副本，都会调用复制构造函数，比如当函数按值传递对象时，或者函数返回对象时。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//下面情况将调用复制构造函数：</span><br><span class="line">Stringuser ditto(motto);</span><br><span class="line">Stringuser metoo=motoo;</span><br><span class="line">Stringuser also=Stringuser(motto);</span><br><span class="line">Stringuser *pStringuser=new Stringuser(motto);</span><br></pre></td></tr></table></figure>
+<h2 id="8，有关函数返回对象"><a href="#8，有关函数返回对象" class="headerlink" title="8，有关函数返回对象"></a>8，有关函数返回对象</h2><p><strong>1）返回指向const对象的引用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cosnt Vector &amp; Max(const Vector &amp;v1,const Vector &amp;v2)&#123;</span><br><span class="line">    if(v1.magval()&gt;va.magval())</span><br><span class="line">        return v1;</span><br><span class="line">    else</span><br><span class="line">        return v2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>返回对象将调用复制构造函数，而返回引用不会。</li>
+<li>引用指向的对象应在调用函数执行时存在，即不能返回临时对象的引用。</li>
+<li>v1和v2都被声明为const引用，因此返回类型必须为const，这样才匹配。</li>
+</ul>
+<p><strong>2）返回指向非const对象的引用</strong></p>
+<p>两种常见的返回非const对象的情况：</p>
+<ul>
+<li>重载赋值运算符：用于提高效率（引用）和连续赋值（非const）。</li>
+<li>重载与cout一起使用的&lt;&lt;运算符：返回类型必须是ostream&amp;，因为如果返回ostream，则需调用ostream的复制构造函数，而ostream没有公有的复制构造函数。</li>
+</ul>
+<p><strong>3）返回对象</strong></p>
+<p>如果函数返回的是临时对象，则不能返回引用。函数返回的临时对象可以被修改重新赋值，但这是无意义的（返回对象调用复制构造函数）。</p>
+<p><strong>4）返回const对象</strong></p>
+<p>防止函数返回来的对象被重新赋值或修改等错误操作，优先返回const对象（返回对象调用复制构造函数）。</p>
+<h2 id="9，定位new创建对象与new创建对象"><a href="#9，定位new创建对象与new创建对象" class="headerlink" title="9，定位new创建对象与new创建对象"></a>9，定位new创建对象与new创建对象</h2><ul>
+<li>在创建第二个对象时，定位new使用一个新对象来覆盖用于第一个对象的内存单元，因此需要提供不同的地址。</li>
+<li>使用定位new运算符为对象分配内存，需显式调用其析构函数。（delete可与常规new运算符配合使用，但不能与定位new配合使用）。（只调用delete[] buffer，将会释放常规new分配的内存块，但它没有为定位new在该内存块中调用的对象调析构函数。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const int BUF=512;</span><br><span class="line">char *buffer=new char[BUF];</span><br><span class="line">Stringuser *pc1=new Stringuser(&quot;heap&quot;);</span><br><span class="line">Stringuser *pc2=new (buffer) Stringuser;</span><br><span class="line">Stringuser *pc3=new (buffer+sizeof(Stringuser)) Stringuser;//重新提供地址，防止覆盖</span><br><span class="line"></span><br><span class="line">delete pc1;//调用析构函数</span><br><span class="line">delete pc2;//不能这么做</span><br><span class="line">//正确的做法</span><br><span class="line">pc3-&gt;~Stringuser();</span><br><span class="line">pc2-&gt;~Stringuser();</span><br><span class="line">delete[] buffer;</span><br></pre></td></tr></table></figure>
+<h2 id="10，成员初始化列表"><a href="#10，成员初始化列表" class="headerlink" title="10，成员初始化列表"></a>10，成员初始化列表</h2><p>成员初始化列表允许在对象创建时就对其进行赋值，此时构造函数体语句还没有执行。</p>
+<p>当数据成员是非静态const成员或者引用，则必须采用这种方式。（const成员必须在指向到构造体之前，即创建对象时进行初始化，因为const成员以及引用只能在创建时进行初始化，不能赋值）。</p>
+<p>只有构造函数可以使用这种初始化列表语法。但是成员初始化列表不限于初始化常量，其他成员也可以使用。</p>
+<p>一种等价的方法是在类声明的时候就进行初始化，但是使用成员初始化列表的构造函数将覆盖相应的类内初始化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Classy&#123;</span><br><span class="line">    int mem1=10;</span><br><span class="line">    const int mem2=20;</span><br><span class="line">    int mem3;</span><br><span class="line">&#125;</span><br><span class="line">//等价于以下成员初始化列表</span><br><span class="line">Classy::Classy(int n,int m):mem1(n),mem2(0),mem3(n*m+2)&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>数据成员被初始化的顺序与它们出现在类声明中的顺序相同，与初始化器中的顺序无关。</p>
+<h2 id="11，类继承"><a href="#11，类继承" class="headerlink" title="11，类继承"></a>11，类继承</h2><p><strong>1）简单继承</strong></p>
+<p>派生是一个is-a关系，派生类继承基类的数据成员和大部分方法。但不继承基类的构造函数、析构函数和赋值运算符。</p>
+<p>当需要派生类时，需要定义自己的构造函数：派生类的构造函数需通过成员初始化列表显式定义基类的构造函数，如果没有显式调用基类构造函数，将自动调用基类的默认构造函数。</p>
+<blockquote>
+<p>因为创建派生类对象时，应首先创建基类对象，即基类对象应在程序进入派生类构造函数之前被创建，因此，需要使用成员初始化列表显式调用基类构造函数。</p>
+<p>如果不通过成员初始化列表，将会先调用基类默认构造函数，再通过赋值运算符设置派生类中的基类数据成员。</p>
+</blockquote>
+<p>基类和派生类的关系：</p>
+<ul>
+<li><p>派生类对象可以使用基类的非私有方法；</p>
+</li>
+<li><p>基类指针或引用可以在不进行显式类型转化的情况下指向或引用派生类对象，如<code>Base *pr=&amp;son;</code>但是，基类指针或引用只能调用基类方法，不能通过其调用派生类的方法。</p>
+</li>
+<li><p>也可以用派生类初始化基类或者将派生类赋值给基类；</p>
+<blockquote>
+<p><strong>派生类与基类相互赋值：</strong></p>
+<p><strong>1）将派生类对象赋给基类对象</strong></p>
+<p>将派生类对象赋给基类对象，将调用左边对象的赋值运算，即基类的赋值运算。</p>
+<p><strong>2）将基类对象赋值给派生类对象</strong></p>
+<p>一般情况下，不允许将基类对象赋值给派生类对象，除非以下三种情况：</p>
+<ul>
+<li>如果派生类包含了这样的构造函数，即对基类对象转换为派生类对象进行了定义。</li>
+<li>如果派生类定义了用于将基类对象赋值给派生类对象的赋值运算符。</li>
+<li>如果发生了强制类型转换。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><strong>2）多态公有继承</strong></p>
+<p>如果要在派生类中重新定义基类的方法，通常应将基类方法声明为虚的。此时，程序将根据引用或者指针指向的对象的类型来选择方法，如果没有将基类方法声明为虚的，程序将根据引用类型或指针类型选择方法。从而实现多态。</p>
+<blockquote>
+<p>方法在基类中声明为虚的，它将在派生类中自动成为虚方法。</p>
+<p>析构函数最好是虚的，这样可以确保以正确的顺序调用析构函数。</p>
+</blockquote>
+<p>在派生类中调用基类的方法，如果该方法没有在派生类中重新定义，将不需要使用作用域解析符；如果该方法在派生类中重新定义了，将需要使用作用域解析符调用基类中的该方法。</p>
+<p><strong>3）派生类重新定义基类的方法</strong></p>
+<p>在派生类中重新定义基类的方法，遵循两个原则：</p>
+<ul>
+<li><p>如果重新定义继承的方法，应确保与原来的原型完全相同，但如果返回类型是基类引用或指针，可以修改为指向派生类的引用或指针。</p>
+</li>
+<li><p>如果基类声明被重载了，则需在派生类中重新定义所有的基类版本。（如果只重新定义基类的一个版本，则基类其他版本将会被隐藏）。</p>
+</li>
+</ul>
+<h2 id="12，抽象基类"><a href="#12，抽象基类" class="headerlink" title="12，抽象基类"></a>12，抽象基类</h2><p>当两个类定义为继承不太合适，但是又具有很多共性时，可以抽取出共性，将其定义为抽象基类。</p>
+<p>抽象基类描述必须至少包含一个纯虚方法（在声明时使得方法=0）的接口。不一定非得定义纯虚方法（在实现中定义）。</p>
+<h2 id="13，继承与动态内存分配"><a href="#13，继承与动态内存分配" class="headerlink" title="13，继承与动态内存分配"></a>13，继承与动态内存分配</h2><p>当基类使用动态内存，派生类没有使用动态内存时，不需要为派生类显式定义析构函数、复制构造函数和赋值运算符。</p>
+<p>当基类和派生类都使用动态内存时，需要为派生类显式定义析构函数、复制构造函数和赋值运算符：</p>
+<ul>
+<li><p>派生类析构函数中delete掉派生类新增成员，基类析构函数将会自动调用。</p>
+</li>
+<li><p>复制构造函数显式调用基类的复制构造函数，通过成员初始化列表将子类的引用传递给基类的复制构造函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hasDMA::hasDMA(const hasDMA &amp;hs):baseDMA(hs)&#123;</span><br><span class="line">    style=new char[std::strlen(hs.style)+1];</span><br><span class="line">    std::strcpy(style,hs.style);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>赋值运算符通过作用域运算符显式调用基类的赋值运算符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hasDMA &amp; hasDMA::operator=(const hasDMA &amp;hs)&#123;</span><br><span class="line">    if(this==&amp;hs)</span><br><span class="line">        return *this;</span><br><span class="line">    baseDMA::operator=(hs);//必须通过作用域解析符，不能通过赋值*this=hs，这将会递归调用</span><br><span class="line">    delete[] style;</span><br><span class="line">    style=new char[std::strlen(hs.style)+1];</span><br><span class="line">    std::strcpy(style,hs.style);</span><br><span class="line">    return *this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="14，补充几个小内容点"><a href="#14，补充几个小内容点" class="headerlink" title="14，补充几个小内容点"></a>14，补充几个小内容点</h2><p><strong>1）有关类中嵌套定义结构</strong></p>
+<p>C++允许在类中声明结构、类和枚举定义，这些嵌套类型的作用域为整个类。这种声明不会创建数据对象，只是指定类可以使用的数据类型。如果声明在类的私有部分，则只能在这个类中使用被声明的类型；如果声明是在公有部分，则可以在类的外部通过作用域解析符使用被声明的类。这意味着它们被局限在类中，不会与其他地方定义的同名结构、类和枚举发生冲突。</p>
+<p><strong>2）静态成员函数</strong></p>
+<p>静态成员函数不能通过对象调用，也不能使用this指针。并且只能使用静态数据成员。</p>
+<p><strong>3）派生类使用基类的友元</strong></p>
+<p>派生类使用基类的友元，须通过强制类型转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os&lt;&lt;(const baseDMA &amp;) hs;</span><br></pre></td></tr></table></figure>
+<p>4）有关const</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Star::Star(const char*s);//const确保参数不会被修改</span><br><span class="line">woid Star::show()const&#123;...&#125;;//const确保调用方法的对象不被修改</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -582,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1，一个完整的类定义"><span class="nav-text">1，一个完整的类定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，析构函数和构造函数"><span class="nav-text">2，析构函数和构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，作用域为类的常量"><span class="nav-text">3，作用域为类的常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4，作用域内枚举"><span class="nav-text">4，作用域内枚举</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1，一个完整的类定义"><span class="nav-text">1，一个完整的类定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2，析构函数和构造函数"><span class="nav-text">2，析构函数和构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3，作用域为类的常量"><span class="nav-text">3，作用域为类的常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4，作用域内枚举"><span class="nav-text">4，作用域内枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5，类中运算符重载"><span class="nav-text">5，类中运算符重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6，类的自动转换和强制类型转换"><span class="nav-text">6，类的自动转换和强制类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7，构造函数中动态分配内存"><span class="nav-text">7，构造函数中动态分配内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8，有关函数返回对象"><span class="nav-text">8，有关函数返回对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9，定位new创建对象与new创建对象"><span class="nav-text">9，定位new创建对象与new创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10，成员初始化列表"><span class="nav-text">10，成员初始化列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11，类继承"><span class="nav-text">11，类继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12，抽象基类"><span class="nav-text">12，抽象基类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13，继承与动态内存分配"><span class="nav-text">13，继承与动态内存分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14，补充几个小内容点"><span class="nav-text">14，补充几个小内容点</span></a></li></ol></div>
             
 
           </div>
